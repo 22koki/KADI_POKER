@@ -29,3 +29,11 @@ class GameRecord(db.Model, SerializerMixin):
     timestamp = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)  # Timestamp of the game
 
     def to_dict(self): 
+        # Convert the GameRecord object into a dictionary for easier access and manipulation
+        return {
+            'game_id': self.game_id,
+            'user_id': self.user_id,
+            'result': self.result,
+            'timestamp': self.timestamp
+            # Additional fields can be added here as needed
+        }
