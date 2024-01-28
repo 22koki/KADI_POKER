@@ -130,6 +130,36 @@ def get_scores(user_id):
 
     return jsonify({"scores": serialized_scores})
 
+# Update the /scores endpoint in app.py
+
+
+
+@app.route('/scores', methods=['GET'])
+def get_user_scores():
+    username = request.args.get('username')
+
+    if not username:
+        return jsonify({"message": "Username is required"}), 400
+
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    scores = GameRecord.query.filter_by(user_id=user.user_id).all()
+    serialized_scores = [
+        {
+            'username': user.username,
+            'game_id': score.game_id,
+            'result': score.result,
+            'timestamp': score.timestamp
+            # Add more fields as needed
+        }
+        for score in scores
+    ]
+
+    return jsonify({"scores": serialized_scores})
+
 
 
     
