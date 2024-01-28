@@ -138,7 +138,11 @@ function homeLayout() {
         }
       }
     }else {
-         }
+      // Computer draws a card
+      const aiPickedCrd = availableCards.shift()
+      setCompHand([...compHand,aiPickedCrd])
+      console.log(aiPickedCrd, "ai picked card")
+    }
   };
 
 
