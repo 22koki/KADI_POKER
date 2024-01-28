@@ -14,4 +14,6 @@ class User(db.Model, SerializerMixin):
     password_hash = db.Column(db.String(128), nullable=False)  # Hash of the user's password
     created_at = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)  # Timestamp of user creation
 
-    
+      # Establish a relationship with the GameRecord model
+    # This indicates that a user can have multiple game records
+    games = db.relationship('GameRecord', backref='users', lazy=True)
