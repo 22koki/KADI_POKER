@@ -34,11 +34,11 @@ const GamePage = () => {
         });
     };
   
-//     const playCard = (cardIndex) => {
-//       // Implement the logic to play a card
-//       // Update the 'userTurn', 'displayedCard', 'userHand', 'compHand', and 'availableCards' state accordingly
-//       // Make a POST request to '/play_card' endpoint on the Flask server
-//     };
+    const playCard = (cardIndex) => {
+      // Implement the logic to play a card
+      // Update the 'userTurn', 'displayedCard', 'userHand', 'compHand', and 'availableCards' state accordingly
+      // Make a POST request to '/play_card' endpoint on the Flask server
+    };
   
 //     return (
 //       <div>
