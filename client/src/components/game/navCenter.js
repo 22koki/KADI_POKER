@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 
-function navCenter() {
+function NavCenter() {
 
     const [timer, setTimer] = useState(0);
 
@@ -31,4 +31,4 @@ function navCenter() {
   )
 }
 
-export default navCenter
+export default NavCenter
