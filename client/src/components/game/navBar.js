@@ -1,6 +1,17 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 
 function navBar() {
+
+    const [username, setUsername] = useState('');
+
+  // Use useEffect to update the username when the component mounts
+  useEffect(() => {
+    // Retrieve the username from local storage or an authentication context
+    const storedUsername = localStorage.getItem('username');
+    setUsername(storedUsername || 'Guest'); // Default to 'Guest' if no username is found
+  }, []);
+
   return (
     <div className='navBar-crd'>
     <div className='left-item'>
@@ -8,7 +19,7 @@ function navBar() {
     </div>
 
     <div className='right-item'>
-      <h2>Username</h2>
+      <h2>{username}</h2>
     </div>
     </div>
   )
