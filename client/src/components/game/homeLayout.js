@@ -82,6 +82,38 @@ function homeLayout() {
         
       };
 
+
+      function handleeSpecialCardRulesUserHand(card) { //handle special hand played by user
+        switch (card.rank) {
+          case '2':
+            handleePenalty(2);
+            break;
+          case '3':
+            handleePenalty(3);
+            break;
+        }
+      }
+    
+      function handleePenalty(count) {  //handle special hand played by user
+    
+        setCompHand(prevCompHand => {
+          const updatedCompHand = [...prevCompHand];
+          for (let i = 0; i < count; i++) {
+            const drawnCard = availableCards.shift();
+            updatedCompHand.push(drawnCard);
+            console.log('AI draws penalty card:', drawnCard);
+          }
+          return updatedCompHand;
+        });
+        console.log(compHand)
+      //   for (let i = 0; i < count; i++) {
+      //     const drawnCard = availableCards.shift()
+      //     setCompHand([...compHand,drawnCard])
+      //     console.log('AI draws penalty card:', drawnCard);
+      //     console.log(compHand)
+      //   }
+      }
+
   return (
     <div className='homeLayout-crd'>
     <NavBar  /* ----------------------------add username as prop from Cookie  -----------------*/ />  
