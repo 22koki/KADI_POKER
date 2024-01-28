@@ -21,3 +21,11 @@ class User(db.Model, SerializerMixin):
 class GameRecord(db.Model, SerializerMixin):
     # Define a table name for the GameRecord model
     __tablename__ = 'game_records'  # Corrected from '_tablename_'
+
+    # Define columns for the GameRecord model
+    game_id = db.Column(db.Integer, primary_key=True)  # Game's unique ID
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)  # ID of the user, foreign key to users table
+    result = db.Column(db.Integer, nullable=False)  # Result of the game
+    timestamp = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)  # Timestamp of the game
+
+    def to_dict(self): 
