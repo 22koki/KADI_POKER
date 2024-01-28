@@ -4,10 +4,10 @@ from models import db, GameRecord  # Import the database object and GameRecord m
 # Using the app's context to perform database operations
 with app.app_context():
 
-#Delete all existing records in the GameRecord table
+    # Delete all existing records in the GameRecord table
     GameRecord.query.delete()
 
-     # Define a list of GameRecord objects to be added to the database
+    # Define a list of GameRecord objects to be added to the database
     game_records = [
         GameRecord(game_id="1", user_id="1", result="0"),
         GameRecord(game_id="2", user_id="1", result="1"),
@@ -21,9 +21,9 @@ with app.app_context():
         GameRecord(game_id="10", user_id="5", result="1"),
         GameRecord(game_id="11", user_id="5", result="0"),
     ]
- 
- # Bulk save the new game records to the database for efficiency
+
+    # Bulk save the new game records to the database for efficiency
     db.session.bulk_save_objects(game_records)
 
-     # Commit the changes to the database
+    # Commit the changes to the database
     db.session.commit()
