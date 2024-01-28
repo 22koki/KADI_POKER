@@ -1,6 +1,34 @@
 import React from 'react'
 
 function homeLayout() {
+
+    let crtTopCard = [];
+   
+    // const [crtTopCard, setPlayedCard] = useState([]);
+    // const [gameCard, setGameCard] = useState([]);
+  
+    const [displayedCard, setDisplayedCard] = useState(null);
+    const [userHand, setUserHand] = useState([]);
+    const [compHand, setCompHand] = useState([]);
+    const [availableCards, setAvailableCards] = useState([]);
+    // const [discardPile, setDiscardPile] = useState([]);
+    // const [userTurn, setUserTurn] = useState(false);
+  
+    useEffect(() => {
+        axios.get('http://localhost:5555/deck')
+          .then(response => {
+            const deck = response.data.deck;
+            setDisplayedCard(deck.pop()); // Set the displayed card from the top of the deck
+            setUserHand([...deck.slice(0, 4)]); // Initial user hand (4 cards)
+            setCompHand([...deck.slice(4, 8)]); // Initial comp hand (4 cards)
+            setAvailableCards([...deck.slice(8)]); // Remaining cards for available cards
+            
+          })
+          .catch(error => {
+            console.error('Error fetching deck:', error);
+          });
+      }, []);
+
   return (
     <div className='homeLayout-crd'>
     <NavBar  /* ----------------------------add username as prop from Cookie  -----------------*/ />  
