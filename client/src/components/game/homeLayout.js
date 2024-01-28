@@ -13,7 +13,15 @@ function homeLayout() {
     const [availableCards, setAvailableCards] = useState([]);
     // const [discardPile, setDiscardPile] = useState([]);
     // const [userTurn, setUserTurn] = useState(false);
-  
+    
+    const handlePickCard=( )=>{
+        const usrPickedCrd = availableCards.shift()
+        setUserHand([...userHand,usrPickedCrd])
+        console.log(usrPickedCrd, "user  clicked pick-card  ||  card added to your-hand")
+        setTimeout(aiLogic,3000);
+     }
+     console.log(availableCards);
+
     useEffect(() => {
         axios.get('http://localhost:5555/deck')
           .then(response => {
