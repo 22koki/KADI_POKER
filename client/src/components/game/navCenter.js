@@ -2,20 +2,19 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 function NavCenter() {
+  const [timer, setTimer] = useState(0);
 
-    const [timer, setTimer] = useState(0);
+  useEffect(() => {
+    const timerInterval = setInterval(() => {
+      setTimer((prevTimer) => prevTimer + 1);
+    }, 1000);
 
-    useEffect(() => {
-      const timerInterval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer + 1);
-      }, 1000);
-  
-      return () => clearInterval(timerInterval);
-    }, []);
-  
-    // Convert seconds to minutes and seconds
-    const minutes = Math.floor(timer / 60);
-    const seconds = timer % 60;
+    return () => clearInterval(timerInterval);
+  }, []);
+
+  // Convert seconds to minutes and seconds
+  const minutes = Math.floor(timer / 60);
+  const seconds = timer % 60;
 
   return (
     <div className='navCenter-crd'>

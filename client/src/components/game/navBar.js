@@ -1,9 +1,7 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function navBar() {
-
-    const [username, setUsername] = useState('');
+function NavBar() {
+  const [username, setUsername] = useState('');
 
   // Use useEffect to update the username when the component mounts
   useEffect(() => {
@@ -14,15 +12,15 @@ function navBar() {
 
   return (
     <div className='navBar-crd'>
-    <div className='left-item'>
-      <h1>Poker Game</h1>
-    </div>
+      <div className='left-item'>
+        <h1>Poker Game</h1>
+      </div>
 
-    <div className='right-item'>
-      <h2>{username}</h2>
+      <div className='right-item'>
+        <h2>{username}</h2>
+      </div>
     </div>
-    </div>
-  )
+  );
 }
 
-export default navBar
+export default NavBar;
