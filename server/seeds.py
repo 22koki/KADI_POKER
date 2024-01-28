@@ -3,3 +3,7 @@ from models import db, GameRecord  # Import the database object and GameRecord m
 
 # Using the app's context to perform database operations
 with app.app_context():
+
+#Delete all existing records in the GameRecord table
+    GameRecord.query.delete()
+ 
