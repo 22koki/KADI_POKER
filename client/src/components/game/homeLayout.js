@@ -1,5 +1,8 @@
 import React from 'react'
-
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import NavBar from './navBar'
+import NavCenter from './navCenter'
 function homeLayout() {
 
     let crtTopCard = [];
@@ -82,6 +85,10 @@ function homeLayout() {
         
       };
 
+      function isValidMove(aiCard) { 
+        console.log(" -------- check for ai vaiable cards  aiCard && crtTopCrd ----------", aiCard, crtTopCrd)
+        return aiCard.suit === crtTopCrd.suit || aiCard.rank === crtTopCrd.rank; 
+       }
 
       function handleSpecialCardRulesCompHand(card) {//handle special hand played by computer
         switch (card.rank) {
