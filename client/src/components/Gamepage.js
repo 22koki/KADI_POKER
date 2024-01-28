@@ -40,38 +40,38 @@ const GamePage = () => {
       // Make a POST request to '/play_card' endpoint on the Flask server
     };
   
-//     return (
-//       <div>
-//         <h1>Poker Game</h1>
-//         {displayedCard && (
-//           <div>
-//             <h2>Displayed Card</h2>
-//             <p>{displayedCard.rank} of {displayedCard.suit}</p>
-//           </div>
-//         )}
-//         {userTurn && (
-//           <div>
-//             <h2>Your Hand</h2>
-//             {userHand.map((card, index) => (
-//               <button key={index} onClick={() => playCard(index)}>
-//                 {card.rank} of {card.suit}
-//               </button>
-//             ))}
-//           </div>
-//         )}
-//         <div>
-//           <h2>Available Cards</h2>
-//           <ul>
-//             {availableCards.map((card, index) => (
-//               <li key={index}>Hidden Card</li>
-//             ))}
-//           </ul>
-//         </div>
-//         <div>
-//           <button onClick={startGame}>Start Game</button>
-//         </div>
-//       </div>
-//     );
-//   };
+    return (
+      <div>
+        <h1>Poker Game</h1>
+        {displayedCard && (
+          <div>
+            <h2>Displayed Card</h2>
+            <p>{displayedCard.rank} of {displayedCard.suit}</p>
+          </div>
+        )}
+        {userTurn && (
+          <div>
+            <h2>Your Hand</h2>
+            {userHand.map((card, index) => (
+              <button key={index} onClick={() => playCard(index)}>
+                {card.rank} of {card.suit}
+              </button>
+            ))}
+          </div>
+        )}
+        <div>
+          <h2>Available Cards</h2>
+          <ul>
+            {availableCards.map((card, index) => (
+              <li key={index}>Hidden Card</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <button onClick={startGame}>Start Game</button>
+        </div>
+      </div>
+    );
+  };
   
   export default GamePage;
