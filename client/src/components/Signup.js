@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
 
   const handleUsernameChange = (e) => {
@@ -13,8 +14,22 @@ const Signup = () => {
     setPassword(e.target.value);
   };
 
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
   const handleSignup = async (e) => {
     e.preventDefault();
+
+    if (password.length < 8) {
+      setMessage('Password must be at least 8 characters.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setMessage('Password and Confirm Password do not match.');
+      return;
+    }
 
     const userData = {
       username: username,
@@ -60,6 +75,15 @@ const Signup = () => {
         <label>
           Password:
           <input type="password" value={password} onChange={handlePasswordChange} />
+        </label>
+        <br />
+        <label>
+          Confirm Password:
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+          />
         </label>
         <br />
         <button type="submit">Sign Up</button>
