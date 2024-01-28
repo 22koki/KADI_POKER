@@ -85,3 +85,24 @@ def login():
     else:
         return jsonify({"message": "Invalid credentials"}), 401
     
+# Endpoint for User records
+@app.route('/gameRecord')
+def get_gameRecords():
+    scores = GameRecord.query.all()
+    serialized_scores = [score.to_dict() for score in scores]
+
+    return jsonify({"scores": serialized_scores})
+
+# Endpoint to record Game Results, associating it with the user who played the game
+@app.route('/record_game', methods=['POST'])
+def record_game():
+    data = request.get_json()
+    user_id = data.get('user_id')  # Assuming you have a way to get the user ID
+    result = data.get('result')
+
+    new_game_record = GameRecord(user_id=user_id, result=result)
+    db.session.add(new_game_record)
+    db.session.commit()
+
+    return jsonify({"message": "Game result recorded successfully"}), 201    
+    
