@@ -1,3 +1,5 @@
+# app.py
+
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -48,6 +50,7 @@ def draw_card():
     card = poker_game.deck.pop(0)
     poker_game.generate_pc_move() # if card is picked initialize pc to make its own next move
     return jsonify({"card": card})
+    
 
 # Endpoint for User Registration
 @app.route('/register', methods=['POST'])
@@ -93,6 +96,7 @@ def get_gameRecords():
 
     return jsonify({"scores": serialized_scores})
 
+
 # Endpoint to record Game Results, associating it with the user who played the game
 @app.route('/record_game', methods=['POST'])
 def record_game():
@@ -104,7 +108,7 @@ def record_game():
     db.session.add(new_game_record)
     db.session.commit()
 
-    return jsonify({"message": "Game result recorded successfully"}), 201   
+    return jsonify({"message": "Game result recorded successfully"}), 201
 
 # Endpoint to Retrieve Scores
 # change to adapt and filter according to user id
@@ -129,6 +133,8 @@ def get_scores(user_id):
     ]
 
     return jsonify({"scores": serialized_scores})
+
+
 
 # Update the /scores endpoint in app.py
 
@@ -203,7 +209,3 @@ def play_card():
 
 if __name__ == "__main__":
     app.run(debug=True, port=5555)
-
-
-
-    
