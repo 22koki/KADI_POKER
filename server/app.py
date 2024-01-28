@@ -25,3 +25,11 @@ poker_game = PokerGame()
 @app.route("/", methods=["GET"])
 def home():
     return jsonify({"message": "Welcome to the Poker API!"})
+
+# Route to return the deck of cards
+@app.route("/deck", methods=["GET"])
+def get_deck():
+    # Initialize the deck before the game starts
+    poker_game.initialize_deck()
+    poker_game.deck = poker_game.get_shuffled_deck()
+    return jsonify({"deck": poker_game.deck})
