@@ -115,8 +115,23 @@ function homeLayout() {
       }
 
 
+      const dropCard = (cardsToDrop) => {
+        const aiSelectedCrd = cardsToDrop[Math.floor(Math.random() * cardsToDrop.length)];
+        console.log(aiSelectedCrd, "ai played card move");
+      
+        // setAvailableCards([...availableCards, displayedCard]);
+        // crtTopCard.push([aiSelectedCrd])
+        setDisplayedCard(aiSelectedCrd);
+        handleSpecialCardRulesCompHand(aiSelectedCrd);
+      
+        const updatedCompHand = compHand.filter(card => card !== aiSelectedCrd);
+        setCompHand(updatedCompHand);
+        setTimeout(checkForWinner,2000);
+      };
+    
+
       //computer logic for game continuity
-  const aiLogic = () =>{
+    const aiLogic = () =>{
     console.log(crtTopCrd, "previously displayed card")
     const validMoves = compHand.filter(isValidMove);
     console.log(validMoves, "valid moves")
