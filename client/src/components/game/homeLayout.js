@@ -83,6 +83,39 @@ function homeLayout() {
       };
 
 
+      function handleSpecialCardRulesCompHand(card) {//handle special hand played by computer
+        switch (card.rank) {
+          case '2':
+            handlePenalty(2);
+            break;
+          case '3':
+            handlePenalty(3);
+            break;
+        }
+      }
+
+      function handlePenalty(count) {
+
+        setUserHand(prevUserHand => {
+          const updatedUserHand = [...prevUserHand];
+          for (let i = 0; i < count; i++) {
+            const drawnCard = availableCards.shift();
+            updatedUserHand.push(drawnCard);
+            console.log('Player draws penalty card:', drawnCard);
+          }
+          return updatedUserHand;
+        
+    
+        });
+        console.log(userHand)
+        // for (let i = 0; i < count; i++) {
+        //   const drawnCard = availableCards.shift()
+        //   setUserHand([...userHand,drawnCard])
+        //   console.log('Player draws penalty card:', drawnCard);
+        //   console.log(userHand)
+        // }
+      }
+
       function handleeSpecialCardRulesUserHand(card) { //handle special hand played by user
         switch (card.rank) {
           case '2':
@@ -114,6 +147,24 @@ function homeLayout() {
       //   }
       }
 
+      const getCardRankValue = (rank) => {
+        const rankValues = {
+          'Ace': 1,
+          '2': 2,
+          '3': 3,
+          '4': 4,
+          '5': 5,
+          '6': 6,
+          '7': 7,
+          '8': 8,
+          '9': 9,
+          '10': 10,
+          'Queen': 11
+          // Add more ranks as needed
+        };
+      
+        return rankValues[rank] || 0;
+      };
 
       const dropCard = (cardsToDrop) => {
         const aiSelectedCrd = cardsToDrop[Math.floor(Math.random() * cardsToDrop.length)];
