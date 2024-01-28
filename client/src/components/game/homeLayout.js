@@ -114,6 +114,14 @@ function homeLayout() {
       //   }
       }
 
+      function checkForWinner() {
+        if (userHand.length === 0) {
+          alert('Player wins!');
+        } else if (compHand.length === 0) {
+         alert('Computer wins!');
+        }
+      }
+
   return (
     <div className='homeLayout-crd'>
     <NavBar  /* ----------------------------add username as prop from Cookie  -----------------*/ />  
