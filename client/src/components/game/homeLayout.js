@@ -114,6 +114,34 @@ function homeLayout() {
       //   }
       }
 
+
+      //computer logic for game continuity
+  const aiLogic = () =>{
+    console.log(crtTopCrd, "previously displayed card")
+    const validMoves = compHand.filter(isValidMove);
+    console.log(validMoves, "valid moves")
+    
+    if (validMoves.length > 0) {
+     
+      const specialMoves = validMoves.filter(card => card.rank === 'Queen' || card.rank === '8');
+      if (specialMoves.length > 0) {
+        dropCard(specialMoves);
+      } else {
+        // Prioritize dropping cards with the same suit as the displayed card
+        const sameSuitMoves = validMoves.filter(card => card.suit === displayedCard.suit);
+        if (sameSuitMoves.length > 0) {
+          dropCard(sameSuitMoves);
+        } else {
+          // If no special or same suit moves, prioritize dropping lower-ranked cards
+          validMoves.sort((a, b) => getCardRankValue(a.rank) - getCardRankValue(b.rank));
+          dropCard([validMoves[0]]);
+        }
+      }
+    }else {
+         }
+  };
+
+
       function checkForWinner() {
         if (userHand.length === 0) {
           alert('Player wins!');
