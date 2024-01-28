@@ -23,7 +23,7 @@ function HomeLayout() {
      const usrPickedCrd = availableCards.shift()
      setUserHand([...userHand,usrPickedCrd])
      console.log(usrPickedCrd, "user  clicked pick-card  ||  card added to your-hand")
-     setTimeout(aiLogic,10000);
+     setTimeout(aiLogic,3000);
   }
   console.log(availableCards);
 
@@ -75,7 +75,7 @@ function HomeLayout() {
         //function for comp to play
         console.log("-------------------istep optn 5.2 penalty not applied ===============")
         console.log("its now ai`s turn") // Call the function for AI logic after a delay
-        setTimeout(aiLogic,10000);
+        setTimeout(aiLogic,3000);
       }
       console.log("------------------- final istep [ user Logic]  ===============")
       
