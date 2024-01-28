@@ -17,3 +17,7 @@ class User(db.Model, SerializerMixin):
       # Establish a relationship with the GameRecord model
     # This indicates that a user can have multiple game records
     games = db.relationship('GameRecord', backref='users', lazy=True)
+
+class GameRecord(db.Model, SerializerMixin):
+    # Define a table name for the GameRecord model
+    __tablename__ = 'game_records'  # Corrected from '_tablename_'
