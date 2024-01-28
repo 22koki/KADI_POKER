@@ -48,3 +48,25 @@ def draw_card():
     card = poker_game.deck.pop(0)
     poker_game.generate_pc_move() # if card is picked initialize pc to make its own next move
     return jsonify({"card": card})
+
+# Endpoint for User Registration
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    # Check if the username already exists
+    existing_user = User.query.filter_by(username=username).first()
+    if existing_user:
+        return jsonify({"message": "Username already exists"}), 400
+
+    # Update this line in your register route
+    hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+
+
+    new_user = User(username=username, password_hash=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({"message": "User registered successfully"}), 201
