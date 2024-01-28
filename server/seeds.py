@@ -22,3 +22,5 @@ with app.app_context():
         GameRecord(game_id="11", user_id="5", result="0"),
     ]
  
+ # Bulk save the new game records to the database for efficiency
+    db.session.bulk_save_objects(game_records)
