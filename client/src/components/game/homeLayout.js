@@ -29,7 +29,16 @@ function homeLayout() {
           });
       }, []);
 
-      const playCard = (card) => {
+      // crtTopCard.unshift(displayedCard)
+      // console.log(crtTopCard,"array of previous game cards")
+        let newTopCard = [...crtTopCard,displayedCard]
+        console.log(newTopCard,"array of previous  game-cards")
+        const crtTopCrd = newTopCard[0]
+     // const crtTopCrd = crtTopCard[0]
+        console.log(crtTopCrd,'top card  || currently active game-card');
+
+
+        const playCard = (card) => {
         const usrPlayedCrd = card
         console.log(usrPlayedCrd,'user-played card');
     
