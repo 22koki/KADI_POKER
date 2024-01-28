@@ -104,5 +104,32 @@ def record_game():
     db.session.add(new_game_record)
     db.session.commit()
 
-    return jsonify({"message": "Game result recorded successfully"}), 201    
+    return jsonify({"message": "Game result recorded successfully"}), 201   
+
+# Endpoint to Retrieve Scores
+# change to adapt and filter according to user id
+# Corrected route to fetch game records for a specific user
+@app.route('/scores/<int:user_id>', methods=['GET'])
+def get_scores(user_id):
+    user = User.query.get(user_id)
+
+    if not user:
+        abort(404, description="User not found")
+
+    scores = GameRecord.query.filter_by(user_id=user_id).all()
+    serialized_scores = [
+        {
+            'username': user.username,
+            'game_id': score.game_id,
+            'result': score.result,
+            'timestamp': score.timestamp
+            # Add more fields as needed
+        }
+        for score in scores
+    ]
+
+    return jsonify({"scores": serialized_scores})
+
+
+
     
