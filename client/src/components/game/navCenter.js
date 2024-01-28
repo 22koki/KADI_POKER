@@ -23,7 +23,7 @@ function NavCenter() {
         </div>
 
         <div className='right-navBar'>
-        <h2>Running Score :</h2>
+        {/* <h2>Running Score :</h2> */}
             
         </div>
     </div>

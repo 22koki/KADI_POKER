@@ -276,8 +276,8 @@ function HomeLayout() {
               {compHand.map((card, index) => (
                 <div  className='playCardDec-crd' key={index} onClick={() => playCard(index)}>
                   
-                <p>{card.rank} </p> 
-                <p>*{card.suit}* </p>
+                <p>** </p> 
+                <p>**** </p>
                   
                 </div>
               ))}
