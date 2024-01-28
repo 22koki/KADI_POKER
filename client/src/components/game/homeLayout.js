@@ -47,7 +47,15 @@ function homeLayout() {
           console.log("-------------------istep 4 updated userHand (no-of-cards - 1 )===============")
           setTimeout(checkForWinner,200);
           console.log("-------------------istep 5  checking penalty possibility===============")
-        
+          if (usrPlayedCrd.rank < 4) {
+            handleeSpecialCardRulesUserHand(usrPlayedCrd);
+            console.log("-------------------istep optn 5.1 penalty rules applied [user plays again] ===============")
+          }else{
+            //function for comp to play
+            console.log("-------------------istep optn 5.2 penalty not applied ===============")
+            console.log("its now ai`s turn") // Call the function for AI logic after a delay
+            setTimeout(aiLogic,3000);
+          }
           console.log("------------------- final istep [ user Logic]  ===============")
           
         }else{
