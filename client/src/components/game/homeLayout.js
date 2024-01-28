@@ -29,6 +29,34 @@ function homeLayout() {
           });
       }, []);
 
+      const playCard = (card) => {
+        const usrPlayedCrd = card
+        console.log(usrPlayedCrd,'user-played card');
+    
+        if (usrPlayedCrd.rank === crtTopCrd.rank ||usrPlayedCrd.suit === crtTopCrd.suit ){
+          
+          setDisplayedCard(usrPlayedCrd);
+          console.log("-------------------istep 1 setting display card===============")
+          crtTopCard.push([usrPlayedCrd])
+          console.log("-------------------istep 2   setting crtTopCard results below  ===============")
+          console.log(displayedCard,"supposed active game-card to be  || usestate method -- setdisplay")
+          console.log(crtTopCard,"new displayed card")
+    
+          const updatedUserHand = userHand.filter(card => card !== usrPlayedCrd);
+          setUserHand(updatedUserHand);
+          console.log("-------------------istep 4 updated userHand (no-of-cards - 1 )===============")
+          setTimeout(checkForWinner,200);
+          console.log("-------------------istep 5  checking penalty possibility===============")
+        
+          console.log("------------------- final istep [ user Logic]  ===============")
+          
+        }else{
+         
+          alert("Pick another card")
+        }
+        
+      };
+
   return (
     <div className='homeLayout-crd'>
     <NavBar  /* ----------------------------add username as prop from Cookie  -----------------*/ />  
