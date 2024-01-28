@@ -58,26 +58,26 @@ const ViewScores = () => {
       return <p>Loading...</p>;
     }
   
-//     return (
-//       <div className="home-wrp">
-//         <div className="right-sqr">
-//           <div className="title-sqr">
-//             <h1> Poker Game </h1>
-//           </div>
-//           <div className="score-sqr">
-//             <h3 className="url"> {username} Score History</h3>
-//             <h4> Games Won: {gamesWon}</h4>
-//             <h4> Games Lost: {gamesLost}</h4>
-//           </div>
-//         </div>
+    return (
+      <div className="home-wrp">
+        <div className="right-sqr">
+          <div className="title-sqr">
+            <h1> Poker Game </h1>
+          </div>
+          <div className="score-sqr">
+            <h3 className="url"> {username} Score History</h3>
+            <h4> Games Won: {gamesWon}</h4>
+            <h4> Games Lost: {gamesLost}</h4>
+          </div>
+        </div>
   
-//         <div className="left-sqr">
-//           <button onClick={handleNewGame}>New Game</button>
-//           <button className="active">View Scores</button>
-//           <button onClick={handleLogOut}> Log Out</button>
-//         </div>
-//       </div>
-//     );
-//   };
+        <div className="left-sqr">
+          <button onClick={handleNewGame}>New Game</button>
+          <button className="active">View Scores</button>
+          <button onClick={handleLogOut}> Log Out</button>
+        </div>
+      </div>
+    );
+  };
   
   export default ViewScores;
