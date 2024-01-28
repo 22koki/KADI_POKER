@@ -160,6 +160,50 @@ def get_user_scores():
 
     return jsonify({"scores": serialized_scores})
 
+@app.route('/scores/<string:username>', methods=['GET'])
+def get_scores_by_username(username):
+    if not username:
+        return jsonify({"message": "Username is required"}), 400
+
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    scores = GameRecord.query.filter_by(user_id=user.user_id).all()
+    serialized_scores = [
+        {
+            'username': user.username,
+            'game_id': score.game_id,
+            'result': score.result,
+            'timestamp': score.timestamp
+            # Add more fields as needed
+        }
+        for score in scores
+    ]
+
+    return jsonify({"scores": serialized_scores})
+
+# Route to start the game
+@app.route('/start_game', methods=['GET'])
+def start_game():
+    displayed_card = poker_game.start_game()
+    return jsonify({"message": "Game started successfully", "displayed_card": displayed_card})
+
+# Route to play a card
+@app.route('/play_card', methods=['POST'])
+def play_card():
+    data = request.get_json()
+    player_name = data.get('player_name')
+    card_choice = data.get('card_choice')
+
+    poker_game.play_card(player_name, card_choice)
+
+    return jsonify({"message": "Card played successfully"})
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5555)
+
 
 
     
