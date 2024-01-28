@@ -11,3 +11,264 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;800;900&display=swap");
+
+:root {
+  --dark-one: #333;
+  --dark-two: #7a7a7a;
+  --dark-three: #0f0c16;
+  --main-color: #581a70b9;
+  --light-one: #fff;
+  --light-two: #f9fafb;
+  --light-three: #f6f7fb;
+  --light-four: #1db99f;
+  --light-five: #007BFF;
+}
+
+/* General styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+button {
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+/*-------------------  main-sqr  ------------------------*/
+.main-sqr {
+  background-image: url(/public/bgimage.jpg);
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100% ;
+  display: flex;
+  justify-content: space-around;
+}
+/*----------------------------------------------------  Home / View Page styling ----------------------------------------------------------------*/
+
+.home-wrp{
+  display: flex;
+  margin-top: 10vh;
+  width: 90%;
+  height: 70vh;
+  background: linear-gradient(220deg, #1db99f, #581a70b9, #333);
+  justify-content: space-around;
+  color: var(--light-one);
+}
+.right-sqr{
+  border-radius: 1vh;
+  height: 100%;
+  width: 45%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-sqr{
+  border-radius: 1vh;
+  height: 100%;
+  width: 45%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-sqr{
+  padding-top: 25%;
+}
+
+.score-sqr{
+  font-size: 1.5em;
+  color: rgb(209, 230, 248);
+}
+
+.url{
+  text-decoration:solid;
+}
+/*-------------------  landing page styling  ------------------------*/
+.landing-sqr{
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(220deg, #1db99f, #581a70b9, #333);
+  height: 70vh;
+  border-radius: 18px;
+  padding: 5%;
+  width: 40%;
+  margin-top: 5vh;
+  color:var(--light-three);
+  font-size: 1.5rem;
+  margin-top: 4em;
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+  color: #4c7aaa;
+}
+a .btn{
+  font-size: 1.5rem;
+  color: blanchedalmond;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #499282;
+  margin-top: 4%;
+  padding-left: 45%;
+  padding-top: 1em;
+  text-align: center;
+  border-radius: 10px;
+}
+a .btn:hover{
+  font-size: 1.4rem;
+  color: rgb(71, 67, 60);
+  background-color: #17a9bd;
+  border-radius: 20px;
+
+}
+.btnwrp{
+  margin-top: 20%;
+}
+
+
+/*-------------------  right-sqr  ------------------------*/
+.card-sqr{
+  background-color: #c5cec59a;
+  min-width: 40%;
+  max-width: 40%;
+  text-align: center;
+  align-content: center; 
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*----------------------------------------------------  form  styling ----------------------------------------------------------------*/
+.form-rct{
+  background-color: aqua;
+  margin-top: 10%;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  min-height: 80%;
+}
+label{
+  font-size: 1.5em;
+  margin-left: 5%;
+}
+input{
+  width: 80%;
+  border-top: none; border-left: none; border-right: none;
+  margin-left: 10%;
+  padding-top: 8%;
+
+}
+button{
+  border: none;
+  font-size: 1.5rem;
+  width: 80%;
+  margin-left:10%;
+  padding: 7%;
+  text-decoration: none;
+  color: blanchedalmond;
+  background-color: #33A036;
+  margin-top: 15%;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+   
+}
+button:hover{
+  font-size: 1.4rem;
+  color: rgb(71, 67, 60);
+  background-color: #19ebfa;
+  border-radius: 20px;
+}
+
+
+/*-------------------- landing Page Style-----------------------------*/
+
+/*-------------------- Login Style-----------------------------*/
+
+/* Card styles */
+.card {
+  max-width: 400px;
+  margin: 120px auto ;
+  margin-top: 4em;
+  padding: 20px;
+  border: 1px solid var(--dark-two);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(220deg, #1db99f, #581a70b9, #333);
+  
+}
+
+.card-header {
+  background-color: #17585a;
+  padding: 15px;
+  text-align: center;
+  border-radius: 15px;
+  color: white;
+}
+
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  
+}
+
+input {
+  width: 90%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid var(--dark-two);
+  border-radius: 5px;
+}
+
+button {
+  background-color: var(--light-four);
+  color: var(--light-one);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--light-five);
+}
+
+p {
+  margin-top: 10px;
+}
+
+a {
+  color: var(--light-one);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #00b36e;
+}

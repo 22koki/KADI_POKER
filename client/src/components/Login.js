@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -51,8 +51,11 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="card">
+    <div className="card-header">
       <h2>Login</h2>
+      </div>
+      <div className='card-body'>
       <form onSubmit={handleLogin}>
         <label>
           Username:
@@ -65,8 +68,12 @@ const Login = () => {
         </label>
         <br />
         <button type="submit">Login</button>
+        <p>
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
       </form>
       {message && <p>{message}</p>}
+      </div>
     </div>
   );
 };
