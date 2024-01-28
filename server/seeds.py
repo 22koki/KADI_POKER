@@ -24,3 +24,6 @@ with app.app_context():
  
  # Bulk save the new game records to the database for efficiency
     db.session.bulk_save_objects(game_records)
+
+     # Commit the changes to the database
+    db.session.commit()
