@@ -33,3 +33,8 @@ def get_deck():
     poker_game.initialize_deck()
     poker_game.deck = poker_game.get_shuffled_deck()
     return jsonify({"deck": poker_game.deck})
+
+@app.route("/shuffle", methods=["POST"])
+def shuffle_deck():
+    poker_game.deck = poker_game.get_shuffled_deck()
+    return jsonify({"message": "Deck shuffled successfully", "shuffled_deck": poker_game.deck})
