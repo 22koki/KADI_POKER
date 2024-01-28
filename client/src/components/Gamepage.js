@@ -23,16 +23,16 @@ const GamePage = () => {
         });
     }, []);
   
-//     const startGame = () => {
-//       axios.get('http://localhost:5555/start_game')
-//         .then(response => {
-//           setDisplayedCard(response.data.displayed_card);
-//           setUserTurn(true);
-//         })
-//         .catch(error => {
-//           console.error('Error starting the game:', error);
-//         });
-//     };
+    const startGame = () => {
+      axios.get('http://localhost:5555/start_game')
+        .then(response => {
+          setDisplayedCard(response.data.displayed_card);
+          setUserTurn(true);
+        })
+        .catch(error => {
+          console.error('Error starting the game:', error);
+        });
+    };
   
 //     const playCard = (cardIndex) => {
 //       // Implement the logic to play a card
