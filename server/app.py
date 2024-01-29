@@ -88,6 +88,21 @@ def login():
     else:
         return jsonify({"message": "Invalid credentials"}), 401
     
+# Endpoint to delete a user by username
+@app.route('/delete_user/<string:username>', methods=['DELETE'])
+def delete_user_by_username(username):
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    # Delete user and commit changes to the database
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify({"message": "User deleted successfully"}), 200
+    
+    
 # Endpoint for User records
 @app.route('/gameRecord')
 def get_gameRecords():
