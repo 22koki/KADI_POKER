@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 function NavCenter() {
   const [timer, setTimer] = useState(0);
 
+  const handleQuitGame= (e) => {
+    e.preventDefault();
+    window.location.href = '/Home';
+  };
+
   useEffect(() => {
     const timerInterval = setInterval(() => {
       setTimer((prevTimer) => prevTimer + 1);
@@ -24,7 +29,7 @@ function NavCenter() {
 
         <div className='right-navBar'>
         {/* <h2>Running Score :</h2> */}
-            
+        <a  onClick={handleQuitGame}>Quit Game</a>
         </div>
     </div>
   )
