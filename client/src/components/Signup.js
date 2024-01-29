@@ -32,6 +32,12 @@ const Signup = () => {
       return;
     }
 
+    // Check if the username contains only digits
+    if (/^\d+$/.test(username)) {
+      setMessage('Username cannot consist solely of integers.');
+      return;
+    }
+
     const userData = {
       username: username,
       password: password,
@@ -67,36 +73,36 @@ const Signup = () => {
   return (
     <div className='card'>
       <div className='card-header'>
-      <h2>Signup</h2>
+        <h2>Signup</h2>
       </div>
       <div className='card-body'>
-      <form onSubmit={handleSignup}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <label>
-          Confirm Password:
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Sign Up</button>
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </form>
-      {message && <p>{message}</p>}
-     </div>
+        <form onSubmit={handleSignup}>
+          <label>
+            Username:
+            <input type="text" value={username} onChange={handleUsernameChange} />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input type="password" value={password} onChange={handlePasswordChange} />
+          </label>
+          <br />
+          <label>
+            Confirm Password:
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+            />
+          </label>
+          <br />
+          <button type="submit">Sign Up</button>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </form>
+        {message && <p>{message}</p>}
+      </div>
     </div>
   );
 };
