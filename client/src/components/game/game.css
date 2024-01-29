@@ -51,12 +51,27 @@ button {
     font-size: 25px;
    
 }
+.right-navBar{
+  display: flex;
+  justify-content: space-around;
+}
 .right-navBar a{
-    padding: 1vh 6vh;
+    padding: 1.7vh 4vh 2vh 4vh;
     text-align: center;
     float: right;
-    
+    text-decoration: none;
+    font-size: 20px;
+    background: var(--card-bg);
+    justify-content: space-around;
+    border-radius: 10px;
 }
+
+.right-navBar a:hover{
+  background-color: #dd3737;
+  /* padding: 1.8vh; */
+  cursor: pointer;
+}
+
 
 /*--------------------------------------------------- Body styles------------------------------ -----------------------*/
 
