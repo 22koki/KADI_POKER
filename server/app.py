@@ -59,6 +59,14 @@ def register():
     username = data.get('username')
     password = data.get('password')
 
+    # Check for non-empty username and password
+    if not username or not password:
+        return jsonify({"message": "Username and password cannot be empty"}), 400
+
+    # Check for minimum password length
+    if len(password) < 8:
+        return jsonify({"message": "Password must be at least 8 characters long"}), 400
+
     # Check if the username already exists
     existing_user = User.query.filter_by(username=username).first()
     if existing_user:
@@ -66,7 +74,6 @@ def register():
 
     # Update this line in your register route
     hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-
 
     new_user = User(username=username, password_hash=hashed_password)
     db.session.add(new_user)
@@ -81,13 +88,21 @@ def login():
     username = data.get('username')
     password = data.get('password')
 
+    # Check for non-empty username and password
+    if not username or not password:
+        return jsonify({"message": "Username and password cannot be empty"}), 400
+
+    # Check if the username exists
     user = User.query.filter_by(username=username).first()
 
-    if user and check_password_hash(user.password_hash, password):
-        return jsonify({"message": "Login successful"}), 200
-    else:
+    if not user:
         return jsonify({"message": "Invalid credentials"}), 401
-    
+
+    # Check if the password is correct
+    if not check_password_hash(user.password_hash, password):
+        return jsonify({"message": "Invalid credentials"}), 401
+
+    return jsonify({"message": "Login successful"}), 200   
 # Endpoint to delete a user by username
 @app.route('/delete_user/<string:username>', methods=['DELETE'])
 def delete_user_by_username(username):
@@ -102,6 +117,32 @@ def delete_user_by_username(username):
 
     return jsonify({"message": "User deleted successfully"}), 200
     
+# Endpoint to edit a user's password
+@app.route('/edit_password/<string:username>', methods=['PATCH'])
+def edit_password(username):
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        return jsonify({"message": "User not found"}), 404
+
+    data = request.get_json()
+    new_password = data.get('new_password')
+
+    # Check for non-empty new password
+    if not new_password:
+        return jsonify({"message": "New password is required"}), 400
+
+    # Check for minimum password length
+    if len(new_password) < 8:
+        return jsonify({"message": "New password must be at least 8 characters long"}), 400
+
+    hashed_password = generate_password_hash(new_password, method='pbkdf2:sha256')
+    user.password_hash = hashed_password
+
+    db.session.commit()
+
+    return jsonify({"message": "Password updated successfully"}), 200
+
     
 # Endpoint for User records
 @app.route('/gameRecord')

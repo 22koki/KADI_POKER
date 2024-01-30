@@ -8,6 +8,8 @@ import HomePage from './components/Home';
 import ViewScores from './components/ViewScores';
 import HomeLayout from './components/game/homeLayout'
 import GamePage from './components/GamePage'
+import EditPassword from './components/EditPassword'; // Adjust the import path
+
 import './App.css';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/Standing-Score" element={<ViewScores />} />
           <Route path="/PokerGame" element={<HomeLayout />} />
           <Route path="/PokerGam" element={<GamePage />} />
+          <Route path="/editPassword" element={<EditPassword />} />
+
         </Routes>
       </div>
     </Router>

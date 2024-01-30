@@ -52,27 +52,31 @@ const Login = () => {
 
   return (
     <div className="card">
-    <div className="card-header">
-      <h2>Login</h2>
+      <div className="card-header">
+        <h2>Login</h2>
       </div>
       <div className='card-body'>
-      <form onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <br />
-        <button type="submit">Login</button>
+        <form onSubmit={handleLogin}>
+          <label>
+            Username:
+            <input type="text" value={username} onChange={handleUsernameChange} />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input type="password" value={password} onChange={handlePasswordChange} />
+          </label>
+          <br />
+          <button type="submit">Login</button>
+          {message && <p>{message}</p>}
+        </form>
         <p>
           Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
-      </form>
-      {message && <p>{message}</p>}
+        {/* Add the button to lead to EditPassword */}
+        <Link to="/editPassword">
+          <button>Edit Password</button>
+        </Link>
       </div>
     </div>
   );
