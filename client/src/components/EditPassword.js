@@ -27,9 +27,11 @@ const EditPassword = () => {
   };
 
   return (
-    <div>
+    <div className='card'>
+      <div className='card-header'>
       <h2>Edit Password</h2>
-      <div>
+      </div>
+      <div className='card-body'>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -51,6 +53,7 @@ const EditPassword = () => {
         <button onClick={handleEditPassword}>Update Password</button>
       </div>
       <div>{message}</div>
+      
     </div>
   );
 };

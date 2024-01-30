@@ -234,6 +234,8 @@ form {
 label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--light-two);
   
 }
 
@@ -260,6 +262,11 @@ button:hover {
 
 p {
   margin-top: 10px;
+  text-align: center;
+  font-size: 1rem;
+  color: rgb(238, 170, 223) ;
+  font-weight: 480;
+
 }
 
 a {

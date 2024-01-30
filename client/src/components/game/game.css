@@ -7,6 +7,7 @@ button {
   --background: linear-gradient(220deg, #1db99f, #581a70b9, #333);
   --card-bg: #007BFF;
   --card-text: #ffffff;
+  --card-color: #000000;
   --main-color: #DC3545;
   --button-bg: #28A745;
   --navbar-color: linear-gradient(220deg, #1db99f, #1a704cb9, #38631c);
@@ -215,6 +216,10 @@ justify-content: space-around;
     overflow: hidden;
     justify-content: space-between;
     line-height: 1%;
+}
+
+p{
+  color: var(--card-color);
 }
 /* button{
     float: left;
